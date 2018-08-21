@@ -13,12 +13,13 @@ const client = new pg.Client({
 });
 
 function output(data) {
-  let first = data.rows[0].first_name;
-  let last = data.rows[0].last_name;
-  let birthday = data.rows[0].birthdate;
-  console.log(
-    `Found the person you were looking for: ${first} ${last}, born ${birthday}`
-  )
+  for (x of data.rows){
+    let first = x.first_name;
+    let last = x.last_name;
+    let birthday = x.birthdate;
+    console.log(`Found the person you were looking for:`)
+    console.log(`${first} ${last}, born ${birthday}`)
+  }
 }
 
 
