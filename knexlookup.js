@@ -11,12 +11,19 @@ const knex = require('knex')({
   }
 });
 
+function output(data) {
+  for (x of data){
+    console.log('Found your query: ')
+    console.log(x.first_name, x.last_name, x.birthdate);
+  }
+}
+
 knex('famous_people')
-  .select('first_name', 'last_name')
+  .select('first_name', 'last_name', 'birthdate')
   .where({first_name: input})
   .orWhere({last_name: input})
   .asCallback(function(err, rows) {
       if (err) return console.error(err);
-      console.log(rows);
+      output(rows)
       knex.destroy(); //terminates the process
     });
