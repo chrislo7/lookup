@@ -17,11 +17,3 @@ const knex = require('knex')({
 knex('famous_people')
   .insert(
     { first_name: firstname, last_name: lastname, birthdate: date })
-
-/*
-  .asCallback(function(err, rows) {
-      if (err) return console.error(err);
-      console.log(rows);
-      knex.destroy(); //terminates the process
-    });
-*/
